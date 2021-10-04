@@ -24,6 +24,6 @@ int main (int argc, char** argv)
         createClientThread(conn, currentConn);
     }
 
-    for (const auto& activeConnection : conn.activeConnections)
+    for (const int activeConnection : conn.activeConnections)
         conn.close(activeConnection);
 }
