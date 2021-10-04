@@ -15,7 +15,7 @@ public:
     Connection ();
 
     /// ipProt, sockType, protocol, port
-    Connection (const int pipProt, const int psockType, const int pprotocol, const in_port_t pport);
+    Connection (const char* pip, const int pipProt, const int psockType, const int pprotocol, const in_port_t pport);
 
     /// FUNCTIONS
     int connect (); /// return: 0 on success, -1 on error
