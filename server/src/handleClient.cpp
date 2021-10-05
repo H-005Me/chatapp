@@ -3,6 +3,7 @@
 #include <string>
 #include <thread>
 #include "../inc/connection.h"
+#include "../../shared/inc/inout.h"
 
 /// DECLARATIONS
 std::string receiveName();
@@ -16,7 +17,8 @@ void createClientThread (Connection& conn, const int connfd)
 
 void handleClient (Connection& conn, const int connfd)
 {
-    std::cout << "[NEW CONNECTION] " << "connfd = " << connfd << '\n';
+    std::cout << "[NEW CONNECTION] " << "connfd = " << connfd << std::endl;
+    write(connfd, "Hello World!");
     conn.close(connfd);
-    std::cout << "[CLOSED CONNECTION] " << "connfd = " << connfd << '\n';
+    std::cout << "[CLOSED CONNECTION] " << "connfd = " << connfd << std::endl;
 }

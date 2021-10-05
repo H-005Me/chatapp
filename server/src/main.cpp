@@ -1,7 +1,7 @@
 #include <iostream>
 #include "../inc/connection.h"
-#include "../../shared/inc/useful.h"
 #include "../inc/handleClient.h"
+#include "../../shared/inc/useful.h"
 
 int main (int argc, char** argv)
 {
@@ -17,7 +17,7 @@ int main (int argc, char** argv)
         int currentConn = conn.accept(); /// TODO this returns 4, then 5, then 4 etc, not 4, 4, 4
         
         if (currentConn == -1) { /// connection failed
-            std::cout << "[WARNING] " << "Connection failed" << '\n';
+            std::cout << "[WARNING] " << "Connection failed" << std::endl;
             continue;
         }
 

@@ -3,7 +3,6 @@
 
 class Connection
 {
-    int sockfd;     /// sock file descriptor
     sockaddr_in servAddr; /// server address
     int ipProt;     /// ip protocol family (ex. AF_INET)
     int sockType;   /// socket type (ex. SOCK_STREAM)
@@ -11,6 +10,8 @@ class Connection
     in_port_t port; /// port to connect to
 
 public:
+    int sockfd;     /// sock file descriptor
+
     /// CONSTRUCTORS
     Connection ();
 
