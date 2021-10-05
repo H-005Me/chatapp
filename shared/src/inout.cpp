@@ -3,7 +3,6 @@
 #include <cstdlib>
 #include <cstring>
 #include <unistd.h>
-#include <iostream>
 
 static const size_t MSGLEN_SZ = 21; /// buffer size for msg header
 

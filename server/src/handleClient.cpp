@@ -4,7 +4,6 @@
 #include <thread>
 #include "../inc/connection.h"
 #include "../../shared/inc/inout.h"
-#include <unistd.h>
 
 /// DECLARATIONS
 std::string receiveName();

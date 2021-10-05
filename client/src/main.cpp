@@ -2,7 +2,6 @@
 #include <netinet/in.h>
 #include "../inc/connection.h"
 #include "../../shared/inc/inout.h"
-#include <unistd.h>
 
 int main (int argc, char** argv)
 {
