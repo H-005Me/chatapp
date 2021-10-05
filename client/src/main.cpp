@@ -2,6 +2,7 @@
 #include <netinet/in.h>
 #include "../inc/connection.h"
 #include "../../shared/inc/inout.h"
+#include <unistd.h>
 
 int main (int argc, char** argv)
 {
@@ -15,9 +16,4 @@ int main (int argc, char** argv)
     }
     
     std::cout << "Connection Succeeded!" << std::endl;
-
-    std::string in;
-    read(conn.sockfd, in);
-
-    std::cout << 'A' << in << 'A' << std::endl;
 }

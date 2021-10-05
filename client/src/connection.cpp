@@ -10,6 +10,8 @@ Connection::Connection ()
 Connection::Connection (const char* pip, const int pipProt, const int psockType, const int pprotocol, const in_port_t pport)
     : ipProt(pipProt), sockType(psockType), protocol(pprotocol), port(pport)
 {
+    memset(&servAddr, 0, sizeof(servAddr));
+    memset(&servAddr, 0, sizeof(servAddr));
     servAddr.sin_family = ipProt;
     servAddr.sin_port = htons(port);
 
