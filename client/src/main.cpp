@@ -8,12 +8,12 @@ int main (int argc, char** argv)
     const in_port_t PORT = 25565;
 
     Connection conn(IP, AF_INET, SOCK_STREAM, 0, PORT);
-    if (conn.connect() != -0) {
+    if (conn.connect() != 0) {
         std::cout << "Connection Failed!" << '\n';
         return 1;
     }
     
     std::cout << "Connection Succeeded!" << '\n';
 
-    
+
 }
