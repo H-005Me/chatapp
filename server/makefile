@@ -13,4 +13,3 @@ build/handleClient.o: src/handleClient.cpp
 ../shared/build/useful.o: ../shared/src/useful.cpp
 	g++ -o ../shared/build/useful.o -c ../shared/src/useful.cpp
 
-clean:

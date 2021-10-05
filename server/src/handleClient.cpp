@@ -1,8 +1,13 @@
 #include "../inc/handleClient.h"
 #include <iostream>
+#include <string>
 #include <thread>
 #include "../inc/connection.h"
 
+/// DECLARATIONS
+std::string receiveName();
+
+/// DEFINITIONS
 void createClientThread (Connection& conn, const int connfd)
 {
     std::thread t(handleClient, std::ref(conn), connfd);
