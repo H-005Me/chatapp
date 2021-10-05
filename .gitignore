@@ -1,3 +1,5 @@
 .vscode/
 .fuse_hidden*
 build/
+server/server
+client/client
