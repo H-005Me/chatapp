@@ -17,7 +17,20 @@ void createClientThread (Connection& conn, const int connfd)
 
 void handleClient (Connection& conn, const int connfd)
 {
-    std::cout << "[NEW CONNECTION] " << conn.activeConnections[connfd].ip << " on socket " << connfd << std::endl;
+    char* clientIp = conn.activeConnections[connfd].ip;
+
+    std::cout << "[NEW CONNECTION] " << clientIp << " on socket " << connfd << std::endl;
+    
+    std::string msg;
+    while (true) {
+        read(connfd, msg);
+
+        if (msg == "!stop")
+            break;
+        
+        std::cout << '[' << clientIp << "] " << msg << std::endl;
+    }
+    
     conn.close(connfd);
     std::cout << "[CLOSED CONNECTION] " << conn.activeConnections[connfd].ip << " on socket " << connfd << std::endl;
 }

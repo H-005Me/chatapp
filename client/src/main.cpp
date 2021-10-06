@@ -15,4 +15,15 @@ int main (int argc, char** argv)
     }
     
     std::cout << "Connection Succeeded!" << std::endl;
+
+    std::string msg;
+    bool running = 1;
+
+    while (running) {
+        std::getline(std::cin, msg);
+        if (msg == "!stop")
+            running = 0;
+        
+        write(conn.sockfd, msg);
+    }
 }
