@@ -18,8 +18,9 @@ void createClientThread (Connection& conn, const int connfd)
 void handleClient (Connection& conn, const int connfd)
 {
     const char* CLIENT_IP = conn.activeConnections[connfd].ip;
+    in_port_t CLIENT_PORT = conn.activeConnections[connfd].port;
 
-    std::cout << "[NEW CONNECTION] " << CLIENT_IP << " on socket " << connfd << std::endl;
+    std::cout << "[NEW CONNECTION] " << CLIENT_IP << ':' << CLIENT_PORT << " on socket " << connfd << std::endl;
     
     std::string msg;
     while (true) {
@@ -33,9 +34,9 @@ void handleClient (Connection& conn, const int connfd)
 
         msg = msg.substr(sep+1); /// actual message
         
-        std::cout << '[' << CLIENT_IP << "] To socket " << fd << ": " << msg << std::endl;
+        std::cout << '[' << CLIENT_IP << ':' << CLIENT_PORT << "] To socket " << fd << ": " << msg << std::endl;
     }
     
     conn.close(connfd);
-    std::cout << "[CLOSED CONNECTION] " << CLIENT_IP << " on socket " << connfd << std::endl;
+    std::cout << "[CLOSED CONNECTION] " << CLIENT_IP << ':' << CLIENT_PORT << " on socket " << connfd << std::endl;
 }

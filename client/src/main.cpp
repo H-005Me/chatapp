@@ -1,7 +1,7 @@
 #include <iostream>
 #include <netinet/in.h>
 #include "../inc/connection.h"
-//#include "../../lib/textblock.a"
+#include "../inc/drawui.h"
 #include "../../shared/inc/inout.h"
 
 int main (int argc, char** argv)
@@ -14,13 +14,13 @@ int main (int argc, char** argv)
         std::cout << "Connection Failed!" << std::endl;
         return 1;
     }
-    
-    std::cout << "Connection Succeeded!" << std::endl;
+
+    system("clear");
+
+    drawUi();
 
     std::string msg;
     bool running = 1;
-
-    //h005::Textblock test;
 
     while (running) {
         int fd;   std::cin >> fd;

@@ -8,8 +8,9 @@ class ClientConn
     sockaddr_in client;
 
 public:
-    char* ip;
+    char ip[IP_SZ];
     int sockfd;
+    in_port_t port;
 
     /// CONSTRUCTORS
     ClientConn();
