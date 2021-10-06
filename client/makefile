@@ -10,3 +10,6 @@ build/connection.o: src/connection.cpp
 ../shared/build/inout.o: ../shared/src/inout.cpp
 	g++ -o ../shared/build/inout.o -c ../shared/src/inout.cpp
 
+clean:
+	rm build/*.o
+	rm ../shared/build/*.o

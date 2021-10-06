@@ -1,6 +1,7 @@
 #pragma once
 #include <netinet/in.h>
-#include <set>
+#include <map>
+#include "clientConn.h"
 
 class Connection
 {
@@ -13,7 +14,7 @@ class Connection
     in_port_t port; /// port to connect to
 
 public:
-    std::set<int> activeConnections;
+    std::map<int, ClientConn> activeConnections;
 
     /// CONSTRUCTORS
     Connection ();

@@ -24,10 +24,14 @@ int Connection::listen (const int nrConn)
 
 int Connection::accept ()
 {
-    int connfd = ::accept(listenfd, nullptr, NULL);
+    sockaddr_in client;
+    const unsigned long CLIENT_SZ = sizeof(client);
+    memset(&client, 0, CLIENT_SZ);
+
+    int connfd = ::accept(listenfd, (sockaddr*)&client, (socklen_t*)&CLIENT_SZ);
 
     if (connfd != -1)
-        activeConnections.insert(connfd);
+        activeConnections.insert(std::pair<int, ClientConn>(connfd, ClientConn(connfd, client)));
     
     return connfd;
 }
