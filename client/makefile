@@ -1,4 +1,4 @@
-client: build/main.o build/connection.o ../shared/build/inout.o
+client: build/main.o build/connection.o ../shared/build/inout.o 
 	g++ -o client build/main.o build/connection.o ../shared/build/inout.o
 
 build/main.o: src/main.cpp

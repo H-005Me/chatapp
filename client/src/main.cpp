@@ -1,6 +1,7 @@
 #include <iostream>
 #include <netinet/in.h>
 #include "../inc/connection.h"
+//#include "../../lib/textblock.a"
 #include "../../shared/inc/inout.h"
 
 int main (int argc, char** argv)
@@ -19,11 +20,19 @@ int main (int argc, char** argv)
     std::string msg;
     bool running = 1;
 
+    //h005::Textblock test;
+
     while (running) {
-        std::getline(std::cin, msg);
-        if (msg == "!stop")
-            running = 0;
+        int fd;   std::cin >> fd;
         
+        if (fd >= 0) {
+            std::getline(std::cin, msg);
+            msg = std::to_string(fd) + ';' + msg.substr(1);
+        } else {
+            msg = std::to_string(fd) + ';';
+            running = 0;
+        }
+
         write(conn.sockfd, msg);
     }
 }

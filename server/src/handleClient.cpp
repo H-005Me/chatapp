@@ -17,20 +17,25 @@ void createClientThread (Connection& conn, const int connfd)
 
 void handleClient (Connection& conn, const int connfd)
 {
-    char* clientIp = conn.activeConnections[connfd].ip;
+    const char* CLIENT_IP = conn.activeConnections[connfd].ip;
 
-    std::cout << "[NEW CONNECTION] " << clientIp << " on socket " << connfd << std::endl;
+    std::cout << "[NEW CONNECTION] " << CLIENT_IP << " on socket " << connfd << std::endl;
     
     std::string msg;
     while (true) {
         read(connfd, msg);
-
-        if (msg == "!stop")
-            break;
         
-        std::cout << '[' << clientIp << "] " << msg << std::endl;
+        size_t sep = msg.find(';');
+        int fd = std::stoi(msg.substr(0, sep)); /// socket to send to
+
+        if (fd == -1)
+            break;
+
+        msg = msg.substr(sep+1); /// actual message
+        
+        std::cout << '[' << CLIENT_IP << "] To socket " << fd << ": " << msg << std::endl;
     }
     
     conn.close(connfd);
-    std::cout << "[CLOSED CONNECTION] " << conn.activeConnections[connfd].ip << " on socket " << connfd << std::endl;
+    std::cout << "[CLOSED CONNECTION] " << CLIENT_IP << " on socket " << connfd << std::endl;
 }
