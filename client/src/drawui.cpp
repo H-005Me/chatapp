@@ -15,7 +15,7 @@ void drawUi ()
 
     h005::SetCursorPos(h005::Coord<int>(WRITING_ROW, 0));
     for (int i = 0; i < MAX_LENGTH; i++)
-        std::cout << 'X';
+        std::cout << '#';
     std::cout << std::flush;
 }
 

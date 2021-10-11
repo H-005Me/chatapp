@@ -2,7 +2,9 @@
 #include <netinet/in.h>
 #include "../inc/connection.h"
 #include "../inc/drawui.h"
+#include "../inc/sendrecv.h"
 #include "../../shared/inc/inout.h"
+#include <thread>
 
 int main (int argc, char** argv)
 {
@@ -18,6 +20,9 @@ int main (int argc, char** argv)
     system("clear");
 
     drawUi();
+
+    bool hrReadRunning = 1; /// while read thread in handleRecv is running
+    std::thread hrRead(handleRecv, conn.sockfd, std::ref(hrReadRunning)); /// handleRecv read thread
 
     std::string msg;
     bool running = 1;
@@ -35,4 +40,7 @@ int main (int argc, char** argv)
 
         write(conn.sockfd, msg);
     }
+
+    hrReadRunning = 0;
+    hrRead.join();
 }
