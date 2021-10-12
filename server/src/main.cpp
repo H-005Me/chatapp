@@ -11,6 +11,7 @@ int main (int argc, char** argv)
         return 1;
     }
 
+    system("clear");
     bool running = 1;
 
     while (running) {

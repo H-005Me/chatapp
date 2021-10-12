@@ -12,17 +12,14 @@ void handleRecv (const int sockfd, bool& running)
 
     std::string msg; /// thread is probably stuck on read() after running is set to 0
     while (running) {
-        std::cout << "T1" << std::endl;
         int r = read(sockfd, msg);
-        std::cout << "T2" << std::endl;
         if (r == -1) {
             std::cout << "Read failed" << std::endl;
             usleep(TO_SLEEP);
             continue;
         }
-        std::cout << "T3 - " << msg << std::endl;
+        std::cout << "DEBUG - " << msg << std::endl;
 
-        writeReceived(msg);
-        std::cout << "T4" << std::endl;
+        //writeReceived(msg);
     }
 }
